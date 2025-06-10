@@ -21,5 +21,9 @@ The GitLab CI/CD pipeline (`.gitlab-ci.yml`) is triggered on every `git push` to
 ## 3. Failure-Recovery Demonstration
 [cite_start]The web service container is configured with a restart policy of `always`. To test its auto-restart capability:
 1.  Get the container ID: `docker ps`
-2.  Manually kill the container: `docker kill <container_id>`
-3.  Observe Docker automatically restarting the container by running `docker ps` again.
+2.  Run `docker exec -it <container_name> bash ` and run  `apt update && apt install procps -y` then `exit`
+3.  Manually kill the container: `docker ecex <container_id> kill -9 1`
+4.  Observe Docker automatically restarting the container by running `docker ps` again.
+
+## 4.Apply simple iptables rules 
+1. Run commands in host `sudo iptables -A INPUT -p tcp -s YOUR_IP_ADDRESS --dport 5000 -j ACCEPT  && sudo iptables -A INPUT -p tcp --dport 5000 -j DROP ` 
