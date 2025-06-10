@@ -1,0 +1,11 @@
+groups:
+- name: service_alerts
+  rules:
+  - alert: ServiceDown
+    expr: up{job="dev-prac-web"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Service is down"
+      description: "The Python web service (job 'python-web-app') has been down for more than 1 minute."
